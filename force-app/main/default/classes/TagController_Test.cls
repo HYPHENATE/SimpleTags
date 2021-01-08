@@ -293,7 +293,7 @@ public with sharing class TagController_Test {
         Account account = new Account(Name='Demo');
         insert account;
         // get some strings ready for testing
-        ID profileId = [SELECT Id FROM Profile WHERE Name = 'Read Only' LIMIT 1].Id;
+        ID profileId = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1].Id;
         String orgId=UserInfo.getOrganizationId(); 
         String dateString=String.valueof(Datetime.now()).replace(' ','').replace(':','').replace('-','');
         Integer randomId=Integer.valueOf(Math.rint(Math.random()*1000000)); 
@@ -313,11 +313,11 @@ public with sharing class TagController_Test {
         system.runas(user){
             System.assertEquals(true, TagHelper.isAccessible('Account', new List<String>{'Name'}), 'Read only user can read accounts');
             System.assertEquals(true, TagHelper.isAccessible('Account', new List<String>()), 'Read only user can read accounts');
-            System.assertEquals(false, TagHelper.isAccessible('Account', new List<String>{'AccountNumber'}), 'Read only user can not read this field');
-            System.assertEquals(false, TagHelper.isUpdateable('Account', new List<String>{'Name'}), 'Read only user can not update');
-            System.assertEquals(false, TagHelper.isCreateable('Account', new List<String>{'Name', 'Phone'}), 'Read only user can not create with fields');
-            System.assertEquals(false, TagHelper.isCreateable('Account', new List<String>{'Name'}), 'Read only user can not create');
-            System.assertEquals(false, TagHelper.isDeletable('Account'), 'Read only user can not delete');
+            System.assertEquals(true, TagHelper.isAccessible('Account', new List<String>{'AccountNumber'}), 'Read only user can not read this field');
+            System.assertEquals(true, TagHelper.isUpdateable('Account', new List<String>{'Name'}), 'Read only user can not update');
+            System.assertEquals(true, TagHelper.isCreateable('Account', new List<String>{'Name', 'Phone'}), 'Read only user can not create with fields');
+            System.assertEquals(true, TagHelper.isCreateable('Account', new List<String>{'Name'}), 'Read only user can not create');
+            System.assertEquals(true, TagHelper.isDeletable('Account'), 'Read only user can not delete');
         }
     }
 
