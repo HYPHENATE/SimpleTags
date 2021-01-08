@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>TagLinkAddedSuccess</fullName>
+        <categories>Tags</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TagLinkAddedSuccess</shortDescription>
+        <value>Tag successfully linked</value>
+    </labels>
+    <labels>
+        <fullName>TagMappingNotConfigured</fullName>
+        <categories>Tags</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TagMappingNotConfigured</shortDescription>
+        <value>The object you are on is not configured for Tags</value>
+    </labels>
+    <labels>
+        <fullName>TagNoAccess</fullName>
+        <categories>Tags</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TagNoAccess</shortDescription>
+        <value>You do not have contact to Tagging, please contact your system administrator to request permissions.</value>
+    </labels>
+    <labels>
+        <fullName>TagNoTagsMatchYourSearch</fullName>
+        <categories>Tags</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TagNoTagsMatchYourSearch</shortDescription>
+        <value>Sorry no tags match your search try again please</value>
+    </labels>
+    <labels>
+        <fullName>TagRemoveError</fullName>
+        <categories>Tags</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TagRemoveError</shortDescription>
+        <value>There was an error removing this tag please contact your system administrator</value>
+    </labels>
+    <labels>
+        <fullName>TagRemoveSuccess</fullName>
+        <categories>Tags</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TagRemoveSuccess</shortDescription>
+        <value>The selected tag has been removed</value>
+    </labels>
+</CustomLabels>

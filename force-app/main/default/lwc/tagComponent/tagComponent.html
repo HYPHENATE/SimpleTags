@@ -1,0 +1,74 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="standard:catalog" size="small"></lightning-icon>
+            &nbsp;&nbsp;&nbsp;Tags
+        </h3>
+        <template if:true={loading}>
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </template>
+        <template if:false={loading}>
+            <template if:true={canManageTags}>
+                <div class="slds-p-horizontal_small">
+                    <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                            <div class="slds-combobox_container">
+                            <div class="slds-combobox" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                        <lightning-input variant="label-hidden" 
+                                            label="Search for tags" value={searchKey} type="search"
+                                            onchange={handleChange} placeholder="search for tags here....">
+                                        </lightning-input>
+                                    </div>
+                                    <template if:true={searchTags}>
+                                        <div class="slds-combobox_container">
+                                            <div id="listbox-id-1" class="slds-dropdown slds-dropdown_fluid" role="listbox">
+                                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                    <template if:true={searchTagsPresent}>
+                                                        <template for:each={searchTags} for:item="item">
+                                                            <li key={item.Id} role="presentation" class="slds-listbox__item">
+                                                                <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option"
+                                                                data-itemid = {item.Id} data-itemname={item.Name} onclick={setSelectedValue}>{item.Name}
+                                                                </div>
+                                                            </li>
+                                                        </template>
+                                                    </template>
+                                                    <template if:false={searchTagsPresent}>
+                                                        <li role="presentation" class="slds-listbox__item">
+                                                            <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+                                                                {label.TagNoTagsMatchYourSearch}
+                                                            </div>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <div class="slds-p-horizontal_small slds-m-top_small">
+                <template if:true={canManageTags}>
+                    <template for:each={tags} for:item="tag">
+                        <lightning-pill key={tag.Id} label={tag.TagName__c} onremove={handleRemove}></lightning-pill>
+                    </template>
+                </template>
+                <template if:false={canManageTags}>
+                    <template if:true={canViewTags}>
+                        <template for:each={tags} for:item="tag">
+                            <div key={tag.Id} class="slds-box slds-box_xx-small slds-m-bottom_xx-small">
+                                {tag.TagName__c}
+                            </div>
+                        </template>
+                    </template>
+                    <template if:false={canViewTags}>
+                        <p>{label.TagNoAccess}</p>
+                    </template>
+                </template>
+            </div>
+        </template>
+    </lightning-card>
+</template>
