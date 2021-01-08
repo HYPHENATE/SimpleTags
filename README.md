@@ -8,6 +8,10 @@ A very simple solution to providing tagging that is reportable in Salesforce. Si
 
 ## Verion Control
 
+### 1.0.2
+- update to provide as an unlocked package option
+- update lighting pages based on changes in Winter 21
+
 ### 1.0.1 - Initial feedback
 - resolve issue where Permission sets were missing apex class method access (https://github.com/HYPHENATE/SimpleTags/issues/2)
 
@@ -24,9 +28,13 @@ A very simple solution to providing tagging that is reportable in Salesforce. Si
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
 
+Unlocked Package Installation URL: 
+Production: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t67000000SaEvAAK
+Sandbox: https://test.salesforce.com/packaging/installPackage.apexp?p0=04t67000000SaEvAAK
+
 1. Ensure my domain is actived and deployed
 2. Ensure path is activated
-3. Install using the deploy to salesforce link
+3. Install using the deploy to salesforce link or the Unlocked package link above
 4. Assign the Tag_User, Tag_Viewer and Tag_Manager Permissions Set to relevant users
 5. Start configuration
 
